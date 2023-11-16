@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHf6.MainPage">
+
+    <StackLayout  Spacing="20" Margin="20">
+        <Label Text="Yazı Büyüklüğü"/>
+        <Slider x:Name="slider1" 
+                Minimum="1"
+                Maximum="100"
+                Value="25"
+                MinimumTrackColor="Red"
+                ThumbColor="Red"
+                />
+        <Label x:Name="lblLabel1"
+               BindingContext="{x:Reference slider1}"
+               Text="{Binding Path=Value, StringFormat='Slider değeri: {0:F0}'}"/>
+
+        <Slider Minimum="10" Maximum="50" x:Name="slider2" Value="20" />
+        <Label Text="YAZI BÜYÜKLÜĞÜ TEST"
+               BindingContext="{x:Reference slider2}"
+               FontSize="{Binding Path=Value}"/>
+
+    </StackLayout>
+
+</ContentPage>

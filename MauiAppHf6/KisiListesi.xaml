@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="MauiAppHf6.KisiListesi"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:MauiAppHf6"
+    mc:Ignorable="d" Disappearing="SaveList" >
+
+    <Grid RowDefinitions="*,Auto" RowSpacing="10" >
+        <ScrollView>
+            <StackLayout Grid.Row="0" Margin="5">
+                <CollectionView x:Name="listKisiler" SelectionMode="Single" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Border Background="Transparent" Margin="5">
+                                <Grid ColumnDefinitions="Auto,*,Auto" 
+                              RowDefinitions="2*,1*,1*,0.5*">
+
+                                    <Image Grid.Column="0" Grid.RowSpan="4"
+                                   Source="{Binding Resim}" WidthRequest="70" />
+
+                                    <Label Text="{Binding AdSoyad}" FontSize="20" Grid.Column="1" Grid.Row="0" />
+                                    <Label Text="{Binding Telefon}" FontSize="12" Grid.Column="1" Grid.Row="1" />
+                                    <Label Text="{Binding Mail}"    FontSize="12" Grid.Column="1" Grid.Row="2" />
+                                    <Label Text="{Binding ID}"      FontSize="8" Grid.Column="1" Grid.Row="3"/>
+
+                                    <VerticalStackLayout Spacing="5" Grid.Column="2" Grid.RowSpan="4">
+                                        <ImageButton Source="edit.png"  CommandParameter="{Binding ID}" Clicked="KisiDuzenle" />
+                                        <ImageButton Source="trash.png" CommandParameter="{Binding ID}" Clicked="KisiSil" />
+                                    </VerticalStackLayout>
+
+                                </Grid>
+                            </Border>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Grid.Row="1"
+                     HorizontalOptions="End">
+            <ImageButton HeightRequest="60"
+                Padding="10"
+                Source="personadd.png"
+                Clicked="KisiEkle"/>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
